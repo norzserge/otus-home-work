@@ -1,0 +1,4 @@
+{
+  "serverPort": 5001,
+  "dbUrl": "mongodb+srv://mymetrica:4CQ8zmIA0rAQ2GD5@cluster0.xejz4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+}
