@@ -55,8 +55,9 @@ class NewsRepository {
 class Report {
   async create(req, res) {
     try {
-      const {newsIds: newsIds}  = req.body;
+      const {newsIds}  = req.body;
       const newsListByIds = await News.find({ '_id': { $in: newsIds } });
+
       const newsListAsHtml = createNewsListAsHtml(newsListByIds);
       const reportHtmlContent = createHtmlLayout(newsListAsHtml);
 
