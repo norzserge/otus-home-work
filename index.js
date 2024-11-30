@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
-const newsRouter = require('./core/routes/news');
+const newsRouter = require('./routes/news');
 
 const app = express();
 const PORT = config.get("serverPort");

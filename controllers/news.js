@@ -1,23 +1,12 @@
-const {parser} = require("html-metadata-parser");
-const News = require("../models/News/News");
 const fs = require("node:fs");
 const path = require("node:path");
+const News = require("../models/News/News");
+const {parser} = require("html-metadata-parser");
+const {generateNewsReport} = require('../views/generateNewsReport');
+const {generateNewsList} = require('../views/generateNewsList');
 
 const FOLDER_NAME = './report';
 const REPORT_PATH = FOLDER_NAME + '/report.html';
-
-const createNewsListAsHtml = (list) => {
-  const items = list.map((item) => {
-    return '<li><a href="' + item.url + '">' + item.title + '</a></li>';
-  }).join('');
-
-  return '<ul>' + items + '</ul>';
-}
-
-const createHtmlLayout = (news) => {
-  return '<!DOCTYPE html>'
-    + '<html lang="ru"><head><meta charset="utf-8"><title>News report</title></head><body>' + news + '</body></html>';
-}
 
 class NewsRepository {
   addToDatabase(req, res) {
@@ -58,8 +47,8 @@ class Report {
       const {newsIds}  = req.body;
       const newsListByIds = await News.find({ '_id': { $in: newsIds } });
 
-      const newsListAsHtml = createNewsListAsHtml(newsListByIds);
-      const reportHtmlContent = createHtmlLayout(newsListAsHtml);
+      const newsListAsHtml = generateNewsList(newsListByIds);
+      const reportHtmlContent = generateNewsReport(newsListAsHtml);
 
       if (!fs.existsSync(FOLDER_NAME)) {
         fs.mkdirSync(FOLDER_NAME);
