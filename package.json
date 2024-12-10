@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.ts",
+    "dev": "nodemon index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -14,9 +14,14 @@
     "express": "^4.21.1",
     "html-metadata-parser": "^2.0.4",
     "mongodb": "^6.11.0",
-    "mongoose": "8.1.1"
+    "mongoose": "8.1.1",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "@types/config": "^3.3.5",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "nodemon": "^3.1.7",
+    "typescript": "^5.7.2"
   }
 }

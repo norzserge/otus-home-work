@@ -1,4 +1,4 @@
-const generateNewsReport = (news) =>
+export const generateNewsReport = (news) =>
   '<!DOCTYPE html>' +
   '<html lang="ru">' +
     '<head>' +
@@ -10,7 +10,3 @@ const generateNewsReport = (news) =>
     '</body>' +
   '</html>'
 ;
-
-module.exports = {
-  generateNewsReport,
-};

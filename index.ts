@@ -1,11 +1,11 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const config = require('config');
-const newsRouter = require('./routes/news');
+import express = require('express');
+import mongoose from 'mongoose'
+import {router as newsRouter} from './routes/news';
+import config from 'config';
 
 const app = express();
-const PORT = config.get("serverPort");
-const dbUrl = config.get('dbUrl');
+const PORT: number = config.get("serverPort");
+const dbUrl: string = config.get('dbUrl');
 
 app.use(express.json());
 app.use('/', newsRouter);
@@ -18,7 +18,7 @@ const start = async () => {
       console.log(`App has been started on port ${PORT} 🚀`);
     });
   } catch (e) {
-    console.log('Server error:', e.message);
+    console.log(e);
     process.exit(1);
   }
 }

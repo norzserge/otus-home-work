@@ -1,21 +1,21 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const News = require("../models/News/News");
-const {parser} = require("html-metadata-parser");
-const {generateNewsReport} = require('../views/generateNewsReport');
-const {generateNewsList} = require('../views/generateNewsList');
+import {generateNewsReport} from '../views/generateNewsReport';
+import {generateNewsList} from '../views/generateNewsList';
+import parser from 'html-metadata-parser'
+import fs = require('node:fs');
+import path = require("node:path");
+import News from '../models/News/News';
 
 const FOLDER_NAME = './report';
 const REPORT_PATH = FOLDER_NAME + '/report.html';
 
-class NewsRepository {
+export class NewsRepository {
   addToDatabase(req, res) {
     try {
       const currentDate = new Date().toLocaleDateString("ru-RU");
       const {url}  = req.body;
 
       parser(url)
-        .then(data=> data.meta.title)
+        .then(data => data.meta.title)
         .then(async (title) => {
           const news = new News({date: currentDate, url, title});
 
@@ -41,7 +41,7 @@ class NewsRepository {
   }
 }
 
-class Report {
+export class Report {
   async create(req, res) {
     try {
       const {newsIds}  = req.body;
@@ -72,9 +72,4 @@ class Report {
       res.status(500).send({message: 'Internal server error: ' + error})
     }
   }
-}
-
-module.exports = {
-  NewsRepository,
-  Report,
 }

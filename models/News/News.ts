@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+import {Schema, model} from 'mongoose';
 
 const NewsSchema = new Schema({
   date: {type: String, required: true},
@@ -6,4 +6,4 @@ const NewsSchema = new Schema({
   title: {type: String, required: true},
 });
 
-module.exports = model('News', NewsSchema);
+export default model('News', NewsSchema);
