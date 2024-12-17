@@ -1,14 +1,14 @@
 import express = require('express');
 import mongoose from 'mongoose'
-import {router as newsRouter} from './routes/news';
 import config from 'config';
+import {router} from './infrastructure/routes';
 
 const app = express();
 const PORT: number = config.get("serverPort");
 const dbUrl: string = config.get('dbUrl');
 
 app.use(express.json());
-app.use('/', newsRouter);
+app.use('/', router);
 
 const start = async () => {
   try {

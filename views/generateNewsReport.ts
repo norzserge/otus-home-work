@@ -3,7 +3,7 @@ export const generateNewsReport = (news) =>
   '<html lang="ru">' +
     '<head>' +
       '<meta charset="utf-8">' +
-      '<title>News report</title>' +
+      '<title>News reports</title>' +
     '</head>' +
     '<body>' +
       news +
