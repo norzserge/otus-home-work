@@ -1,5 +1,5 @@
-import {INewsRepository} from "../infrastructure/newsRepository";
 import {News} from "../domain/News";
+import {INewsRepository} from "../domain/INewsRepository";
 
 export class GetAllNewsUseCase {
   private readonly _newsRepository: INewsRepository;

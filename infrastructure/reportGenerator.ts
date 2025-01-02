@@ -3,10 +3,7 @@ import {generateNewsList} from "../views/generateNewsList";
 import {generateNewsReport} from "../views/generateNewsReport";
 import * as fs from "node:fs";
 import path from "node:path";
-
-export interface IReportGenerator {
-  generate(newsIds: Array<INews>): Promise<string>;
-}
+import {IReportGenerator} from "../domain/IReportGenerator";
 
 export class ReportGenerator implements IReportGenerator {
   async generate(newsList: Array<INews>): Promise<string> {

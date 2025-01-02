@@ -1,5 +1,6 @@
 import {News} from "../domain/News";
 import {Schema, model} from 'mongoose';
+import {INewsRepository} from "../domain/INewsRepository";
 
 const newsSchema = new Schema({
   date: {type: Date, required: true},
@@ -8,12 +9,6 @@ const newsSchema = new Schema({
 });
 
 const NewsModel = model('News', newsSchema);
-
-export interface INewsRepository {
-  save(news: News): Promise<string>;
-  findAll(): Promise<Array<News>>;
-  findByIds(ids: Array<string>): Promise<Array<News>>
-}
 
 export class NewsRepository implements INewsRepository {
   async save(news: News): Promise<string> {

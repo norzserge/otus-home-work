@@ -1,8 +1,5 @@
 import parser from 'html-metadata-parser';
-
-export interface IHtmlParser {
-  getTitleFromUrl(url: string): Promise<string | null>
-}
+import {IHtmlParser} from "../domain/IHtmlParser";
 
 export class HtmlParser implements IHtmlParser {
   async getTitleFromUrl(url: string): Promise<string | null> {

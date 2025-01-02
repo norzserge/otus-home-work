@@ -1,6 +1,7 @@
-import {IHtmlParser} from "../infrastructure/htmlParser";
-import {INewsRepository} from "../infrastructure/newsRepository";
 import {News} from "../domain/News";
+import {IHtmlParser} from "../domain/IHtmlParser";
+import {INewsRepository} from "../domain/INewsRepository";
+import {AddNewsDto} from "./dtos/AddNewsDto";
 
 export class AddNewsUseCase {
   private readonly _htmlParser: IHtmlParser;
@@ -11,7 +12,8 @@ export class AddNewsUseCase {
     this._newsRepository = newsRepository;
   }
 
-  async execute(url: string) {
+  async execute(dto: AddNewsDto) {
+    const {url} = dto;
     const title = await this._htmlParser.getTitleFromUrl(url);
 
     if (!title) {

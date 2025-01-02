@@ -1,5 +1,6 @@
-import {INewsRepository} from "../infrastructure/newsRepository";
-import {IReportGenerator} from "../infrastructure/reportGenerator";
+import {INewsRepository} from "../domain/INewsRepository";
+import {IReportGenerator} from "../domain/IReportGenerator";
+import {GenerateReportDto} from "./dtos/GenerateReportDto";
 
 export class GenerateReportUseCase {
   private readonly _newsRepository: INewsRepository;
@@ -13,8 +14,8 @@ export class GenerateReportUseCase {
     this._reportGenerator = reportGenerator;
   }
 
-  async execute(ids: Array<string>): Promise<string> {
-    const newsList = await this._newsRepository.findByIds(ids);
+  async execute(dto: GenerateReportDto): Promise<string> {
+    const newsList = await this._newsRepository.findByIds(dto.ids);
     const filePath = await this._reportGenerator.generate(newsList);
 
     return filePath;
